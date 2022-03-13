@@ -1,7 +1,9 @@
 # RESTFUL_API
 
-npm init
-This command will ask you for various details, such as the name of your project, the author, the repository, and more. Then it will generate a package.json file in that folder.
+# npm init
+
+This command will ask you for various details, such as the name of your project, the author, the repository, and more.
+Then it will generate a package.json file in that folder.
 
 
 <!-- image 1 -->
@@ -19,11 +21,12 @@ This command will ask you for various details, such as the name of your project,
 Package.json file
 
 
-This Package.json file will contain all the scripts, like how to run the app, or how to test the app, as well as all the dependencies.
+This Package.json file will contain all the scripts, like how to run the app, or how to test the app,
+as well as all the dependencies.
 
 We need to install a few dependencies now.
 
-npm i express mongoose nodemon dotenv
+==>npm i express mongoose nodemon dotenv
 Here,
 
 Express will be used for the middleware to create various CRUD endpoints.
@@ -56,7 +59,8 @@ app.use(express.json());
 app.listen(3000, () => {
     console.log(`Server Started at ${3000}`)
 })
-Now, the server is set on Port 3000. Let's write the script to start our server. We have also added the app.use. Inside that, we have a code snippet that allows us to accept the data in JSON format.
+Now, the server is set on Port 3000. Let's write the script to start our server. We have also added the app.use. Inside that, 
+we have a code snippet that allows us to accept the data in JSON format.
 
 In the package.json file, add a script which says the following:
 
@@ -122,6 +126,8 @@ Now, let's connect the database to our server using Mongoose.
 
 mongoose.connect(mongoString);
 const database = mongoose.connection
+
+
 Now, we have to throw a success or an error message depending on whether our database connection is successful or fails.
 
 database.on('error', (error) => {
@@ -131,10 +137,14 @@ database.on('error', (error) => {
 database.once('connected', () => {
     console.log('Database Connected');
 })
+
+
 Here, database.on means it will connect to the database, and throws any error if the connection fails. And database.once means it will run only one time. If it is successful, it will show a message that says Database Connected.
 
+
 Screenshot-2022-02-19-135414-1
-Here is the whole code up to this point:
+
+# Here is the whole code up to this point:
 
 require('dotenv').config();
 
@@ -159,7 +169,9 @@ app.use(express.json());
 app.listen(3000, () => {
     console.log(`Server Started at ${3000}`)
 })
-How to Create our Routes for the Endpoints
+
+
+***How to Create our Routes for the Endpoints
 Create a folder called routes, and inside make a file called routes.js.
 
 Import this file into our main script file, index.js.
@@ -215,6 +227,8 @@ router.patch('/update/:id', (req, res) => {
 router.delete('/delete/:id', (req, res) => {
     res.send('Delete by ID API')
 })
+
+
 We have five methods that use the REST Methods of Post, Get, Patch, and Delete.
 
 This router is taking the route as the first parameter. Then in the second parameter it's taking a callback.
